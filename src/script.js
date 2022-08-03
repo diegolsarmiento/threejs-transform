@@ -40,6 +40,21 @@ scene.add(mesh)
 const axesHelper = new THREE.AxesHelper(2);
 scene.add(axesHelper);
 
+// Group example
+const cubeA = new THREE.Mesh( geometry, material );
+cubeA.position.set( 2, 2, 0 );
+
+const cubeB = new THREE.Mesh( geometry, material );
+cubeB.position.set( -2, -2, 0 );
+
+//create a group and add the two cubes
+//These cubes can now be rotated / scaled etc as a group
+const group = new THREE.Group();
+group.add( cubeA );
+group.add( cubeB );
+
+scene.add( group );
+
 /**
  * Sizes
  */
@@ -55,7 +70,7 @@ const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height)
 
 //camera.position.z = 3
 // SET X Y Z
-camera.position.set(0.8,-0.5,3);
+camera.position.set(0.8,-0.5,10);
 
 // Alternative to POSITION Camera: LookAt
 camera.lookAt(mesh.position);
